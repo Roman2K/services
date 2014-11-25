@@ -1,0 +1,15 @@
+GIT
+  remote: git://github.com/Roman2K/values_server.git
+  revision: 2ea63f65f7384efc5a299019f1451165ab43272c
+  specs:
+    values_server (0.1.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  values_server!
