@@ -1,3 +1,4 @@
 source 'https://rubygems.org'
 
-gem 'values_server', github: 'Roman2K/values_server'
+#gem 'values_server', github: 'Roman2K/values_server'
+gem 'values_server', git: Dir.home + '/code/values_server'
