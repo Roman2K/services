@@ -2,6 +2,5 @@
 
 root=$(dirname "$0")
 
-cd "$root"
-
-exec stunnel stunnel.conf
+cd "$root" \
+  && exec stunnel stunnel.conf
