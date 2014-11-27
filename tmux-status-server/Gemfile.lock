@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/Roman2K/values_server.git
-  revision: 804ef80712e7522a44e0038fe373908d5ed7de99
+  revision: 59aa511f6f42eb598d184659bc6ecdfd6cd60012
   specs:
-    values_server (0.804ef80712e7522a44e0038fe373908d5ed7de99)
+    values_server (0.59aa511f6f42eb598d184659bc6ecdfd6cd60012)
 
 GEM
   remote: https://rubygems.org/
