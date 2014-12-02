@@ -24,9 +24,7 @@ module TmuxStatus
   end
 end
 
-server = ValuesServer::Server.new '/tmp/tmux_status.sock',
+ValuesServer::Server.new '/tmp/tmux_status.sock',
   'time'  => lambda { `date` },
   'cpu'   => ValuesServer::Cache.new(5).value { TmuxStatus.cpu }.method(:get),
   'ports' => ValuesServer::Cache.new(5).value { TmuxStatus.ports }.method(:get)
-
-server.join
