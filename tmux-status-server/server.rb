@@ -4,7 +4,7 @@ module TmuxStatus
   PORTS_RANGES = [8000..8999, 3000..3999]
 
   def self.cpu
-    IO.popen(%W(ps -U #{Process.uid} -e -o %cpu,comm), 'r', &:read).
+    `ps -U #{Process.uid} -e -o %cpu,comm`.
       split("\n").
       map { |line| line.split(" ", 2) }.
       sort_by { |pct,| -pct.to_f }[0,3].
@@ -13,7 +13,7 @@ module TmuxStatus
   end
 
   def self.ports
-    IO.popen(%w(lsof -l -P -n -i TCP -s TCP:LISTEN), 'r', &:read).
+    `lsof -l -P -n -i TCP -s TCP:LISTEN`.
       split("\n").
       drop(1).
       grep(/.*:(\d+) \(LISTEN\)/) { $1.to_i }.
