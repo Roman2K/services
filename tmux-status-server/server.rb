@@ -6,6 +6,7 @@ module TmuxStatus
   def self.cpu
     `ps -U #{Process.uid} -e -o %cpu,comm`.
       split("\n").
+      drop(1).
       map { |line| line.split(" ", 2) }.
       sort_by { |pct,| -pct.to_f }[0,3].
       map { |pct, cmd| "#{pct} #{File.basename(cmd)[0,7]}".rstrip }.
