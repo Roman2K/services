@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-user="roman"
-host="crissic"
-port=22
-local_port=22001
-remote_port=3128
-
-exec ssh -p $port $user@$host -N -L *:$local_port:localhost:$remote_port -v
