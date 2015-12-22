@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+root=$(dirname "$0")
+cd "$root"
+
+exec rethinkdb \
+  -d data \
+  --bind 127.0.0.1 \
+  --http-port 28080
