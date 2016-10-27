@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+root=$(dirname "$0")
+cd "$root"
+exec postgres -D data -r log/server.log
