@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+root=$(dirname "$0")
+cd "$root"
+. ../utils.sh
+
+end_with_term
+elasticsearch -D es.config=elasticsearch.yml &
+wait
