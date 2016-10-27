@@ -1,4 +1,4 @@
 */data
+*/log
 node_modules
-mongroup/log/*.log
-mongroup/pids/*.pid
+mongroup
