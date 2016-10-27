@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+cd "$(dirname "$0")"/..
+
+echo "Initialising mongroup"
+mkdir -p mongroup/{log,pids}
+
+for run in */run; do
+  dir=$(dirname "$run")
+  echo "Initialising $dir"
+  mkdir -p "$dir"/{data,log}
+done
