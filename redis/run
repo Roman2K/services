@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+root=$(dirname "$0")
+cd "$root"
+exec redis-server redis.conf
