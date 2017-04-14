@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+root=$(dirname "$0")
+cd "$root"
+
+exec syncthing -no-restart -no-browser -home=data
