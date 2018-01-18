@@ -2,4 +2,8 @@
 
 root=$(dirname "$0")
 cd "$root"
-exec postgres -D data -r log/server.log
+
+pg="/usr/lib/postgresql/9.6/bin/postgres"
+[ -x "$pg" ] || pg=postgres
+
+exec "$pg" -D data -r log/server.log
