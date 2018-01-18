@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+root=$(dirname "$0")
+cd "$root"
+
+opt_root=$HOME/opt/chronograf
+influxdb_url=http://localhost:8086
+
+exec $opt_root/usr/bin/chronograf \
+	--influxdb-url=$influxdb_url \
+	--bolt-path=data/db \
+	--canned-path=$opt_root/usr/share/chronograf/canned
