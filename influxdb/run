@@ -1,6 +1,25 @@
 #!/usr/bin/env bash
 
-root=$(dirname "$0")
-cd "$root"
+root=$(cd "$(dirname "$0")" && pwd)
 
-exec influxd run -config config 
+port=8086:8086
+data_root=$root/data
+
+data=/var/lib/influxdb/data
+data_local=$data_root/data
+
+meta=/var/lib/influxdb/meta
+meta_local=$data_root/meta
+
+wal=/var/lib/influxdb/wal
+wal_local=$data_root/wal
+
+exec docker run --rm \
+  -p $port \
+  --network influx \
+  --name influxdb \
+  --user $UID:$GID \
+  -e INFLUXDB_DATA_DIR=$data    -v $data_local:$data \
+  -e INFLUXDB_META_DIR=$meta    -v $meta_local:$meta \
+  -e INFLUXDB_DATA_WAL_DIR=$wal -v $wal_local:$wal \
+  influxdb

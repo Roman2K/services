@@ -1,8 +1,20 @@
 #!/usr/bin/env bash
 
-root=$(dirname "$0")
-cd "$root"
+root=$(cd "$(dirname "$0")" && pwd)
 
-opt_root=$HOME/opt/grafana
+port=3000:3000
 
-exec $opt_root/bin/grafana-server -config conf/defaults.ini
+data=/var/lib/grafana
+data_local=$root/data
+
+log=/var/log/grafana
+log_local=$root/log
+
+exec docker run --rm \
+  -p $port \
+  --network influx \
+  --name grafana \
+  --user $UID:$GID \
+  -e GF_PATHS_DATA=$data  -v $data_local:$data \
+  -e GF_PATHS_LOGS=$log   -v $log_local:$log \
+  grafana/grafana
