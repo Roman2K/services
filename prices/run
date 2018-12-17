@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
 
-cd $HOME/code/go/src/gitlab.com/Roman2K/priceconv/_get
-exec bash get.sh
+exec docker run --rm \
+  --name priceconv \
+  --network influx \
+  --entrypoint "" \
+  priceconv \
+  ./scrape
