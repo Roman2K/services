@@ -2,11 +2,7 @@
 
 root=$(cd "$(dirname "$0")" && pwd)
 
-http_port=8086
-rpc_port=8088
-
-port=$http_port:$http_port
-port2=$rpc_port:$rpc_port
+port=8086:8086
 data_root=$root/data
 
 data=/var/lib/influxdb/data
@@ -19,12 +15,11 @@ wal=/var/lib/influxdb/wal
 wal_local=$data_root/wal
 
 exec docker run --rm \
-  -p $port -p $port2 \
+  -p $port \
   --network influx \
   --name influxdb \
   --user $UID:$GID \
-  -e INFLUXDB_BIND_ADDRESS="0.0.0.0:$rpc_port" \
   -e INFLUXDB_DATA_DIR=$data    -v $data_local:$data \
   -e INFLUXDB_META_DIR=$meta    -v $meta_local:$meta \
   -e INFLUXDB_DATA_WAL_DIR=$wal -v $wal_local:$wal \
-  influxdb:1.7.3
+  influxdb
