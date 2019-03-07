@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# https://github.com/Radarr/Radarr/wiki/Docker
+
+root=$(cd "$(dirname "$0")" && pwd)
+data=$root/data
+
+exec docker run --rm \
+  --name=radarr \
+  -v $data/config:/config \
+  -v $data/downloads:/downloads \
+  -v $data/movies:/movies \
+  -e PGID=$GID -e PUID=$UID  \
+  -e TZ=Europe/Paris \
+  -p 7878:7878 \
+  linuxserver/radarr

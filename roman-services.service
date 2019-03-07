@@ -1,0 +1,12 @@
+[Unit]
+Description=roman/services
+
+[Service]
+Type=forking
+User=roman
+Group=roman
+ExecStart=/bin/bash -cl "cd services && ./mg_service start"
+ExecStop=/bin/bash -cl "cd services && ./mg_service stop"
+
+[Install]
+WantedBy=multi-user.target
