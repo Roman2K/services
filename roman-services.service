@@ -1,6 +1,8 @@
+# /etc/systemd/system/roman-services.service
+
 [Unit]
 Description=roman/services
-RequiresMountsFor=/home/roman/windl /home/roman/windrive
+RequiresMountsFor=/home/roman/windl /home/roman/windrive /home/roman/windata
 
 [Service]
 Type=forking
