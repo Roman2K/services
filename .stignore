@@ -1,0 +1,11 @@
+/mongroup
+
+/*/log
+/grafana/data/log
+/radarr/data/config/logs
+/sonarr/data/config/logs
+/bazarr/data/log
+/jackett/data/Jackett/log.*
+/syncthing/data/config/*/*.log
+
+/influxdb/data

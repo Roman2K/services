@@ -14,7 +14,7 @@ exec docker run --rm \
   -p $port \
   --network influx \
   --name grafana \
-  --user $UID:$GID \
+  --user $UID:$UID \
   -e GF_PATHS_DATA=$data  -v $data_local:$data \
   -e GF_PATHS_LOGS=$log   -v $log_local:$log \
   grafana/grafana

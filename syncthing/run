@@ -1,6 +1,18 @@
 #!/usr/bin/env bash
 
-root=$(dirname "$0")
-cd "$root"
+# https://hub.docker.com/r/linuxserver/syncthing/
 
-exec syncthing -no-restart -no-browser -home=data
+root=$(cd "$(dirname "$0")" && pwd)
+data=$root/data
+home_roman=$HOME
+
+exec docker run --rm \
+  --name syncthing \
+  -v $data:/var/syncthing \
+  -v $home_roman/code:/home_roman/code \
+  -e PUID=$UID -e PGID=$UID \
+  -e TZ=Europe/Paris \
+  -p 8384:8384 \
+  -p 22000:22000 \
+  -p 21027:21027/udp \
+  syncthing/syncthing

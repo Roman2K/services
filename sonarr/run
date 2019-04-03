@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# https://github.com/Radarr/Radarr/wiki/Docker
+# https://hub.docker.com/r/linuxserver/sonarr/
 
 root=$(cd "$(dirname "$0")" && pwd)
 data=$root/data
@@ -25,13 +25,12 @@ winpc=`getent hosts winpc | awk '{ print $1 }'`
 
 exec docker run --rm \
   --network mediadl \
-  --name radarr \
+  --name sonarr \
   --add-host=winpc:$winpc \
   -v $data/config:/config \
   -v $torrents:/torrents:ro \
-  -v $media/films:/films \
-  -v $media/docu:/docu \
+  -v $media/series:/series \
   -e PUID=$UID -e PGID=$UID \
   -e TZ=Europe/Paris \
-  -p 7878:7878 \
-  linuxserver/radarr
+  -p 8989:8989 \
+  linuxserver/sonarr:develop

@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# https://hub.docker.com/r/linuxserver/bazarr/
+
+root=$(cd "$(dirname "$0")" && pwd)
+data=$root/data
+
+media=$HOME/windrive/media
+while ! [ $(ls "$media" | wc -l) -gt 0 ]; do
+  echo waiting for media...
+  sleep 0.5
+done
+
+exec docker run --rm \
+  --network mediadl \
+  --name bazarr \
+  -v $data:/config \
+  -v $media/films:/films \
+  -v $media/series:/series \
+  -e PUID=$UID -e PGID=$UID \
+  -e TZ=Europe/Paris \
+  -p 6767:6767 \
+  linuxserver/bazarr

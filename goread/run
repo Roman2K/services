@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+root=$(cd "$(dirname "$0")" && pwd)
+data=$root/data
+
+send_int() {
+  kill -INT $child
+}
+
+trap send_int SIGTERM SIGINT SIGQUIT
+
+docker run --rm \
+  --name goread \
+  -p 9000:8080 \
+  -e PUID=$UID -e PGID=$UID \
+  -v $data:/tmp/storage \
+  roman-goread &
+
+child=$!
+wait $child

@@ -6,6 +6,11 @@ services=(
   grafana
   redis
   radarr
+  bazarr
+  jackett
+  sonarr
+  syncthing
+  goread
 )
 
 exec mg "$@" "${services[@]}"

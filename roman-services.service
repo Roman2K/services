@@ -1,5 +1,6 @@
 [Unit]
 Description=roman/services
+RequiresMountsFor=/home/roman/windl /home/roman/windrive
 
 [Service]
 Type=forking
