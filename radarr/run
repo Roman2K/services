@@ -17,6 +17,12 @@ while ! [ $(ls "$torrents" | wc -l) -gt 0 ]; do
   sleep 0.5
 done
 
+ng=$HOME/windata/ng
+while ! [ $(ls "$ng" | wc -l) -gt 0 ]; do
+  echo waiting for ng...
+  sleep 0.5
+done
+
 winpc=`getent hosts winpc | awk '{ print $1 }'`
 [[ "$winpc" ]] || {
   echo "failed to get IP of winpc" >&2
@@ -29,6 +35,7 @@ exec docker run --rm \
   --add-host=winpc:$winpc \
   -v $data/config:/config \
   -v $torrents:/torrents:ro \
+  -v $ng:/ng \
   -v $media/films:/films \
   -v $media/docu:/docu \
   -e PUID=$UID -e PGID=$UID \
