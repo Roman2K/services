@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# https://hub.docker.com/r/linuxserver/hydra2/
+
+root=$(cd "$(dirname "$0")" && pwd)
+data=$root/data
+
+exec docker run --rm \
+  --network mediadl \
+  --name hydra \
+  -v $data/config:/config \
+  -e PUID=$UID -e PGID=$UID \
+  -e TZ=Europe/Paris \
+  -p 5076:5076 \
+  linuxserver/hydra2

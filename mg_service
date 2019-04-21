@@ -1,16 +1,20 @@
 #!/usr/bin/env bash
 
 services=(
+  postgres
   influxdb
   prices
   grafana
   redis
   radarr
+  lidarr
   bazarr
   jackett
+  hydra
   sonarr
   syncthing
-  goread
+  ttrss
+  sabnzbd
 )
 
 exec mg "$@" "${services[@]}"

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# https://hub.docker.com/r/linuxserver/tt-rss/
+
+root=$(cd "$(dirname "$0")" && pwd)
+data=$root/data
+
+exec docker run --rm \
+  --network postgres \
+  --name tt-rss \
+  -v $data/config:/config \
+  -e PUID=$UID -e PGID=$UID \
+  -e TZ=Europe/Paris \
+  -p 8081:80 \
+  linuxserver/tt-rss

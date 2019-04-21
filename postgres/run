@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 
-root=$(dirname "$0")
-cd "$root"
+root=$(cd "$(dirname "$0")" && pwd)
+data=$root/data
 
-pg="/usr/lib/postgresql/9.6/bin/postgres"
-[ -x "$pg" ] || pg=postgres
+# https://hub.docker.com/_/postgres
 
-exec "$pg" -D data -r log/server.log
+exec docker run --rm \
+  --network postgres \
+  --name postgres \
+  -v $data:/var/lib/postgresql/data \
+  --user $UID:$UID \
+  postgres:alpine

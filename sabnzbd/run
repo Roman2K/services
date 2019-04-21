@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# https://hub.docker.com/r/linuxserver/sabnzbd/
+
+root=$(cd "$(dirname "$0")" && pwd)
+data=$root/data
+
+ng=$HOME/windata/ng
+while ! [ $(ls "$ng" | wc -l) -gt 0 ]; do
+  echo waiting for ng...
+  sleep 0.5
+done
+
+exec docker run --rm \
+  --network mediadl \
+  --name sabnzbd \
+  -v $data/config:/config \
+  -v $ng:/ng \
+  -e PUID=$UID -e PGID=$UID \
+  -e TZ=Europe/Paris \
+  -p 8080:8080 \
+  linuxserver/sabnzbd:latest
