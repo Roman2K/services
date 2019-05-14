@@ -10,6 +10,7 @@ exec docker run --rm \
   --name syncthing \
   -v $data:/var/syncthing \
   -v $home_roman/code:/home_roman/code \
+  -v $home_roman/windrive:/home_roman/windrive \
   -e PUID=$UID -e PGID=$UID \
   -e TZ=Europe/Paris \
   -p 8384:8384 \

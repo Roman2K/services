@@ -1,4 +1,5 @@
 */data
 */log
-node_modules
-mongroup
+/node_modules
+/mongroup
+/postgres/archive

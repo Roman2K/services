@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 services=(
-  postgres
   influxdb
   prices
   grafana
@@ -13,8 +12,8 @@ services=(
   hydra
   sonarr
   syncthing
-  ttrss
   sabnzbd
+  ngrok
 )
 
 exec mg "$@" "${services[@]}"
