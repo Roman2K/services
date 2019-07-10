@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
 
-root=$(dirname "$0")
-cd "$root"
-exec redis-server redis.conf
+root=$(cd "$(dirname "$0")" && pwd)
+data=$root/data
+port=6379
+
+# https://hub.docker.com/_/redis
+
+exec docker run --rm \
+  --network redis \
+  --name redis \
+  -v $data:/data \
+  -p $port:$port \
+  --user $UID:$UID \
+  redis

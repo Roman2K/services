@@ -6,7 +6,7 @@ data=$root/data
 # https://hub.docker.com/_/postgres
 
 exec docker run --rm \
-  --network postgres \
+  --network host --network postgres \
   --name postgres \
   -v $data:/var/lib/postgresql/data \
   --user $UID:$UID \

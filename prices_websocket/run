@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+cd $HOME/code/bubblebot-ruby
+
+exec ./x livetickers

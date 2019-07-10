@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-exec mg "$@" $(rg -l /windrive */run | xargs -n1 dirname)
+svcs="$(rg -l /windrive */run | xargs -n1 dirname) syncthing"
+exec mg "$@" $svcs

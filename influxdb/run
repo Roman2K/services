@@ -27,4 +27,4 @@ exec docker run --rm \
   -e INFLUXDB_DATA_DIR=$data    -v $data_local:$data \
   -e INFLUXDB_META_DIR=$meta    -v $meta_local:$meta \
   -e INFLUXDB_DATA_WAL_DIR=$wal -v $wal_local:$wal \
-  influxdb:1.7.3
+  influxdb:1.7

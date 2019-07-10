@@ -3,17 +3,19 @@
 services=(
   influxdb
   prices
+  prices_websocket
   grafana
   redis
-  radarr
-  lidarr
-  bazarr
-  jackett
-  hydra
-  sonarr
-  syncthing
-  sabnzbd
   ngrok
+
+  # syncthing
+  # radarr
+  # lidarr
+  # bazarr
+  # sonarr
+  # jackett
+  # hydra
+  # sabnzbd
 )
 
 exec mg "$@" "${services[@]}"
