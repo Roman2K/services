@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -e
+
+cd ~/code/bubblebot-ruby
+
+IMAGE=bubblebot-ruby make build

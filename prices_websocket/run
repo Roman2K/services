@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
+set -e
 
-cd $HOME/code/bubblebot-ruby
-
-exec ./x livetickers
+exec docker run --rm \
+  --network influx \
+  --name bubblebot-ruby \
+  -v ~/code/bubblebot-ruby/.kraken.key:/.kraken.key \
+  bubblebot-ruby /entrypoint.sh livetickers

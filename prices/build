@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -e
+
+cd ~/code/go/src/gitlab.com/Roman2K/priceconv
+
+IMAGE=priceconv make build

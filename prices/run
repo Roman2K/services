@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
+set -e
 
 exec docker run --rm \
-  --name priceconv \
   --network influx \
-  --entrypoint "" \
-  priceconv \
-  ./scrape
+  --name priceconv \
+  priceconv
