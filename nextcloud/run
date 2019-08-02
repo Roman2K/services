@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# https://github.com/nextcloud/docker
+
+root=$(cd "$(dirname "$0")" && pwd)
+data=$root/data
+
+exec docker run --rm \
+  --name nextcloud \
+  -p 8081:80 \
+  nextcloud

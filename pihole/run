@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# https://github.com/pi-hole/docker-pi-hole/blob/master/README.md
+
+root=$(cd "$(dirname "$0")" && pwd)
+data=$root/data
+
+exec docker run --rm \
+  --name pihole \
+  -p 53:53/tcp -p 53:53/udp \
+  -p 80:80 \
+  -p 443:443 \
+  -e TZ=Europe/Paris \
+  -v "$data/etc-pihole/:/etc/pihole/" \
+  -v "$data/etc-dnsmasq.d/:/etc/dnsmasq.d/" \
+  --dns=127.0.0.1 --dns=1.1.1.1 \
+  pihole/pihole:latest
