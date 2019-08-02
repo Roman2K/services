@@ -1,6 +1,7 @@
 archive
 */data
 */log
+/package-lock.json
 /node_modules
 /mongroup
 /postgres/archive

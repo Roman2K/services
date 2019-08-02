@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+exec ssh -vNL localhost:23128:localhost:3128 wis

@@ -7,15 +7,16 @@ services=(
   grafana
   redis
   ngrok
+  wis_squid
 
-  # syncthing
-  # radarr
-  # lidarr
-  # bazarr
-  # sonarr
-  # jackett
-  # hydra
-  # sabnzbd
+  #syncthing
+  #radarr
+  #lidarr
+  #bazarr
+  #sonarr
+  #jackett
+  #hydra
+  #sabnzbd
 )
 
 exec mg "$@" "${services[@]}"
